@@ -7,27 +7,21 @@
   <meta name="description" content="Dileep Kumar M — Electronics & Communication Engineering • Clean C++ • Embedded Systems • STM32 • ESP32" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-  
   <style>
     /* ===== VARIABLES ===== */
     :root {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --muted: #94a3b8;
-      --text: #f1f5f9;
-      --accent: #0ea5a3;
+      --bg: #0a0f1e;
+      --card: #131b2e;
+      --muted: #8b9bb4;
+      --text: #e2e8f0;
+      --accent: #00d4aa;
       --accent-2: #60a5fa;
       --accent-3: #8b5cf6;
       --glass: rgba(255,255,255,0.05);
       --maxw: 1200px;
-      --radius: 16px;
-      --gap: 20px;
-      --transition: all 0.3s ease;
+      --radius: 20px;
+      --gap: 24px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -44,6 +38,24 @@
       background: var(--bg);
       color: var(--text);
       scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    body {
+      background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%);
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
     }
     a {
       color: inherit;
@@ -54,6 +66,7 @@
       max-width: var(--maxw);
       margin: 0 auto;
       padding: 20px;
+      position: relative;
     }
     .row {
       display: flex;
@@ -67,26 +80,32 @@
     }
     h1, h2, h3, h4 {
       margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
     }
     p {
       margin: 0;
       line-height: 1.6;
     }
     section {
-      margin-bottom: 80px;
+      margin-bottom: 100px;
+      position: relative;
     }
     .section-title {
-      font-size: 32px;
-      margin-bottom: 30px;
+      font-size: 42px;
+      margin-bottom: 40px;
       position: relative;
       display: inline-block;
+      background: linear-gradient(90deg, var(--accent), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .section-title:after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -12px;
       left: 0;
-      width: 60px;
+      width: 80px;
       height: 4px;
       background: linear-gradient(90deg, var(--accent), var(--accent-3));
       border-radius: 2px;
@@ -100,102 +119,141 @@
       gap: 12px;
       padding: 30px 0;
       margin-bottom: 20px;
+      position: relative;
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
     .logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 18px;
+      width: 80px;
+      height: 80px;
+      border-radius: 22px;
       background: linear-gradient(135deg, var(--accent), var(--accent-3));
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       color: white;
-      font-size: 24px;
-      box-shadow: 0 10px 30px rgba(14,165,183,0.2);
+      font-size: 28px;
+      box-shadow: 0 15px 35px rgba(0, 212, 170, 0.25);
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
     }
     .logo:hover {
-      transform: translateY(-3px) rotate(5deg);
-      box-shadow: 0 15px 35px rgba(14,165,183,0.3);
+      transform: translateY(-5px) rotate(5deg);
+      box-shadow: 0 20px 40px rgba(0, 212, 170, 0.35);
+    }
+    .logo:hover::after {
+      animation: shine 1s ease;
+    }
+    @keyframes shine {
+      100% { transform: translateX(100%); }
     }
     .name {
       line-height: 1.2;
     }
     .name h1 {
-      font-size: 26px;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--text), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .name .sub {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--muted);
-      margin-top: 6px;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
     }
 
     nav.top-actions {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
     }
     .btn {
-      padding: 12px 20px;
-      border-radius: 12px;
+      padding: 14px 24px;
+      border-radius: 14px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       border: 1px solid transparent;
       cursor: pointer;
       transition: var(--transition);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .btn:hover::before {
+      opacity: 1;
     }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-3));
       color: white;
-      box-shadow: 0 10px 25px rgba(14,165,183,0.2);
+      box-shadow: 0 10px 30px rgba(0, 212, 170, 0.25);
     }
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(14,165,183,0.3);
+      box-shadow: 0 15px 35px rgba(0, 212, 170, 0.35);
     }
     .btn-ghost {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
       color: var(--text);
+      backdrop-filter: blur(10px);
     }
     .btn-ghost:hover {
       background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
     }
 
     /* ===== HERO ===== */
     .hero {
       display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 40px;
+      grid-template-columns: 1fr 380px;
+      gap: 50px;
       align-items: start;
-      margin: 60px 0;
+      margin: 80px 0;
     }
     .card {
       background: var(--card);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: 32px;
       border: 1px solid var(--glass);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
     }
-    .card:before {
+    .card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -205,97 +263,136 @@
       background: linear-gradient(90deg, var(--accent), var(--accent-3));
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     }
     .hero-left h2 {
-      font-size: 36px;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .lead {
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: 10px;
     }
 
     .highlights {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin: 24px 0;
+      margin: 28px 0;
     }
     .pill {
-      background: rgba(14,165,183,0.1);
-      padding: 10px 16px;
+      background: rgba(0, 212, 170, 0.1);
+      padding: 12px 20px;
       border-radius: 999px;
       font-weight: 600;
       color: var(--accent);
       font-size: 14px;
       transition: var(--transition);
-      border: 1px solid rgba(14,165,183,0.2);
+      border: 1px solid rgba(0, 212, 170, 0.2);
+      backdrop-filter: blur(10px);
     }
     .pill:hover {
-      background: rgba(14,165,183,0.2);
-      transform: translateY(-2px);
+      background: rgba(0, 212, 170, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 212, 170, 0.15);
     }
 
     /* ===== PROFILE IMAGE STYLES ===== */
     .profile-image {
-      width: 200px;
-      height: 200px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 20px;
+      margin: 0 auto 24px;
       display: block;
       border: 4px solid var(--card);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: var(--transition);
+      position: relative;
+    }
+    .profile-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,212,170,0.2), transparent);
+      border-radius: 50%;
+      opacity: 0;
       transition: var(--transition);
     }
     .profile-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      transform: scale(1.08);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+    .profile-image:hover::after {
+      opacity: 1;
     }
     .profile-header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .profile-name {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .profile-title {
       color: var(--muted);
       font-size: 16px;
+      letter-spacing: 0.5px;
     }
 
     /* ===== PROJECTS ===== */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
     }
     .project {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      padding: 20px;
-      border-radius: 12px;
+      padding: 24px;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.05);
       transition: var(--transition);
       height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,212,170,0.03), transparent);
+      opacity: 0;
+      transition: var(--transition);
     }
     .project:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      border-color: rgba(14,165,183,0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+      border-color: rgba(0,212,170,0.2);
+    }
+    .project:hover::before {
+      opacity: 1;
     }
     .thumb {
       width: 100%;
-      height: 160px;
-      border-radius: 10px;
+      height: 180px;
+      border-radius: 12px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -303,19 +400,34 @@
       background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
       color: white;
       font-weight: 800;
-      font-size: 20px;
+      font-size: 22px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .thumb::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
       transition: var(--transition);
     }
     .project:hover .thumb {
       transform: scale(1.05);
     }
+    .project:hover .thumb::after {
+      opacity: 1;
+    }
     .meta {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
     }
     .proj-actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       margin-top: auto;
     }
     .proj-actions .btn {
@@ -327,82 +439,100 @@
     .sidebar {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
     .contact-line {
       color: var(--muted);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.6;
     }
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 12px;
+      margin-top: 12px;
     }
     .tag {
       background: rgba(255,255,255,0.05);
-      padding: 8px 14px;
+      padding: 10px 16px;
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
       transition: var(--transition);
       border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
     }
     .tag:hover {
-      background: rgba(14,165,183,0.1);
+      background: rgba(0,212,170,0.1);
       color: var(--accent);
-      border-color: rgba(14,165,183,0.2);
+      border-color: rgba(0,212,170,0.2);
+      transform: translateY(-2px);
     }
 
     /* ===== SKILLS SECTION ===== */
     .skills-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
     }
     .skill-category h4 {
-      font-size: 20px;
-      margin-bottom: 16px;
+      font-size: 22px;
+      margin-bottom: 20px;
       color: var(--accent);
     }
 
     /* ===== CERTIFICATES & INTERNSHIP ===== */
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
     }
     .cert-card {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 20px;
-      border-radius: 12px;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 16px;
       background: var(--card);
       border: 1px solid var(--glass);
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,212,170,0.03), transparent);
+      opacity: 0;
+      transition: var(--transition);
     }
     .cert-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+    .cert-card:hover::before {
+      opacity: 1;
     }
     .cert-icon {
-      font-size: 40px;
+      font-size: 44px;
       color: var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .cert-title {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .cert-meta {
       color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 12px;
+      font-size: 15px;
+      margin-bottom: 16px;
     }
     
     /* Certificate Image */
@@ -410,37 +540,23 @@
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+    .cert-card:hover .cert-image {
+      transform: scale(1.03);
     }
 
     /* ===== FOOTER ===== */
     footer {
-      margin-top: 80px;
+      margin-top: 100px;
       text-align: center;
       color: var(--muted);
-      font-size: 15px;
-      padding: 30px 0;
+      font-size: 16px;
+      padding: 40px 0;
       border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* ===== LOADING STATES ===== */
-    .loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-    .spinner {
-      border: 3px solid rgba(255,255,255,0.1);
-      border-radius: 50%;
-      border-top: 3px solid var(--accent);
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      position: relative;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -459,26 +575,29 @@
       header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 24px;
       }
       nav.top-actions {
         width: 100%;
         justify-content: flex-start;
       }
       .logo {
-        width: 60px;
-        height: 60px;
-        font-size: 20px;
+        width: 70px;
+        height: 70px;
+        font-size: 24px;
       }
       .hero-left h2 {
-        font-size: 28px;
+        font-size: 36px;
       }
       .thumb {
-        height: 140px;
+        height: 160px;
       }
       .profile-image {
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
+      }
+      .section-title {
+        font-size: 36px;
       }
     }
     @media (max-width: 520px) {
@@ -486,48 +605,44 @@
         padding: 16px;
       }
       .card {
-        padding: 20px;
+        padding: 24px;
       }
       .btn {
-        padding: 10px 16px;
-        font-size: 13px;
+        padding: 12px 20px;
+        font-size: 14px;
       }
       .hero-left h2 {
-        font-size: 24px;
+        font-size: 32px;
       }
       .profile-image {
-        width: 140px;
-        height: 140px;
+        width: 160px;
+        height: 160px;
       }
       .section-title {
-        font-size: 28px;
+        font-size: 32px;
       }
     }
 
     /* small visual tweaks for clarity */
     code {
-      background: rgba(14,165,183,0.1);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 13px;
+      background: rgba(0,212,170,0.1);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 14px;
       color: var(--accent);
-      border: 1px solid rgba(14,165,183,0.2);
+      border: 1px solid rgba(0,212,170,0.2);
     }
     a:hover {
       color: var(--accent);
     }
     
-    /* Clean C++ Explanation */
-    .clean-cpp {
-      background: rgba(14,165,183,0.05);
-      border-left: 4px solid var(--accent);
-      padding: 16px;
-      border-radius: 8px;
-      margin: 16px 0;
+    /* Floating animation for visual interest */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-    .clean-cpp h4 {
-      color: var(--accent);
-      margin-bottom: 8px;
+    .floating {
+      animation: float 6s ease-in-out infinite;
     }
   </style>
 </head>
@@ -536,7 +651,7 @@
     <!-- HEADER -->
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true">DK</div>
+        <div class="logo floating" aria-hidden="true">DK</div>
         <div class="name">
           <h1>Dileep Kumar M</h1>
           <div class="sub">Electronics & Communication Engineering • Embedded Systems</div>
@@ -559,22 +674,19 @@
     <!-- HERO -->
     <section class="hero" aria-label="Introduction">
       <div class="card hero-left">
-        <h2>Building Embedded Solutions with Clean, Maintainable Code</h2>
+        <h2>Building Embedded Solutions with Clean C++</h2>
         <p class="lead">Electronics & Communication Engineering student specializing in embedded systems development with STM32, ESP32, and C++. I create practical, well-documented prototypes that solve real problems.</p>
 
-        <div class="clean-cpp">
-          <h4>What is Clean C++?</h4>
-          <p>Clean C++ means writing code that is readable, maintainable, and follows best practices. It includes proper memory management, use of modern C++ features, consistent naming conventions, and modular design that makes code easier to understand and extend.</p>
-        </div>
-
-        <div class="highlights" id="dynamic-highlights" aria-hidden="true">
-          <!-- Dynamic highlights will be loaded here -->
+        <div class="highlights" aria-hidden="true">
           <div class="pill">Clean C++</div>
           <div class="pill">STM32 • Arduino</div>
           <div class="pill">ESP32 • IoT</div>
+          <div class="pill">Basics of Verilog</div>
+          <div class="pill">Embedded Systems</div>
+          <div class="pill">Git • GitHub</div>
         </div>
 
-        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <div style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#projects">
             <i class="fas fa-rocket"></i> View Projects
           </a>
@@ -596,12 +708,12 @@
 
         <div class="card">
           <strong>Contact</strong>
-          <div class="contact-line" id="contact" style="margin-top:12px">
+          <div class="contact-line" id="contact" style="margin-top:16px">
             <i class="fas fa-envelope"></i> <a href="mailto:dileepindo@gmail.com">dileepindo@gmail.com</a><br>
             <i class="fas fa-phone"></i> <a href="tel:+918431271011">+91 84312 71011</a><br>
             <i class="fab fa-github"></i> <a href="https://github.com/dileepkumar33" target="_blank">github.com/dileepkumar33</a>
           </div>
-          <div style="margin-top:16px;display:flex;gap:10px">
+          <div style="margin-top:20px;display:flex;gap:12px">
             <a class="btn btn-primary" href="mailto:dileepindo@gmail.com">
               <i class="fas fa-envelope"></i> Email
             </a>
@@ -622,9 +734,45 @@
     <section class="skills" id="skills" aria-labelledby="skills-title">
       <h3 class="section-title" id="skills-title">Technical Skills</h3>
       
-      <div class="skills-container" id="skills-container">
-        <!-- Skills will be dynamically loaded here -->
-        <div class="spinner"></div>
+      <div class="skills-container">
+        <div class="card skill-category">
+          <h4>Programming Languages</h4>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">C</span>
+            <span class="tag">Python</span>
+            <span class="tag">Basics of Verilog</span>
+          </div>
+        </div>
+        
+        <div class="card skill-category">
+          <h4>Embedded Platforms</h4>
+          <div class="tags">
+            <span class="tag">STM32</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">Arduino</span>
+          </div>
+        </div>
+        
+        <div class="card skill-category">
+          <h4>Tools & Technologies</h4>
+          <div class="tags">
+            <span class="tag">Git</span>
+            <span class="tag">Arduino IDE</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">IoT Protocols</span>
+          </div>
+        </div>
+        
+        <div class="card skill-category">
+          <h4>Concepts</h4>
+          <div class="tags">
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">OOP Principles</span>
+            <span class="tag">Digital Electronics</span>
+            <span class="tag">Microcontrollers</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -632,9 +780,34 @@
     <section class="certificates" id="certificates" aria-labelledby="certificates-title">
       <h3 class="section-title" id="certificates-title">Certificates & Internship</h3>
 
-      <div class="certs-grid" id="certificates-container">
-        <!-- Certificates will be dynamically loaded here -->
-        <div class="spinner"></div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <img src="nptel.pdf" alt="NPTEL Certificate" class="cert-image">
+          <div class="cert-title">NPTEL Online Certification</div>
+          <div class="cert-meta">Elite Silver • IIT Kharagpur • 2023</div>
+          <p>Successfully completed the NPTEL course with elite silver certification, demonstrating proficiency in advanced programming concepts.</p>
+          <div class="proj-actions">
+            <a class="btn btn-ghost" href="nptel.pdf" target="_blank">View Certificate</a>
+            <a class="btn btn-primary" href="nptel.pdf" download>Download</a>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <img src="intern.png" alt="Internship Certificate" class="cert-image">
+          <div class="cert-title">Internship Completion</div>
+          <div class="cert-meta">Embedded Systems • 2023</div>
+          <p>Successfully completed internship program focusing on embedded systems development and practical implementation of IoT solutions.</p>
+          <div class="proj-actions">
+            <a class="btn btn-ghost" href="intern.png" target="_blank">View Certificate</a>
+            <a class="btn btn-primary" href="intern.png" download>Download</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -642,196 +815,100 @@
     <section class="projects" id="projects" aria-labelledby="projects-title">
       <h3 class="section-title" id="projects-title">Featured Projects</h3>
 
-      <div class="projects-grid" id="projects-container" role="list">
-        <!-- Projects will be dynamically loaded here -->
-        <div class="spinner"></div>
+      <div class="projects-grid" role="list">
+        <!-- library-management-system-cpp -->
+        <article class="project" role="listitem">
+          <div class="thumb" aria-hidden="true">Library • C++</div>
+          <div>
+            <h4 style="margin-top:6px">Library Management System</h4>
+            <div class="meta">C++ • Console Application • File I/O</div>
+            <p class="meta" style="margin-top:8px">A comprehensive library management console application implementing CRUD operations, file persistence, and search functionality with clean, object-oriented design.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank">Open</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PulseSensor-ESP32 -->
+        <article class="project" role="listitem">
+          <div class="thumb">Pulse • ESP32</div>
+          <div>
+            <h4 style="margin-top:6px">ESP32 Pulse Sensor</h4>
+            <div class="meta">ESP32 • IoT • Blynk • Health Monitoring</div>
+            <p class="meta" style="margin-top:8px">Real-time pulse monitoring system using ESP32 with Blynk dashboard integration. Implements signal smoothing algorithms and remote BPM data visualization.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank">Open</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- adas-level1-stm32 -->
+        <article class="project" role="listitem">
+          <div class="thumb">ADAS • STM32</div>
+          <div>
+            <h4 style="margin-top:6px">Level-1 ADAS Prototype</h4>
+            <div class="meta">STM32 • Sensor Integration • Automotive</div>
+            <p class="meta" style="margin-top:8px">Advanced Driver Assistance System prototype using STM32 with lane detection, obstacle avoidance demonstrations, and comprehensive sensor data logging.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank">Open</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- rtl-metastability-handling -->
+        <article class="project" role="listitem">
+          <div class="thumb">RTL • Verilog</div>
+          <div>
+            <h4 style="margin-top:6px">Metastability Handling</h4>
+            <div class="meta">Verilog • Synchronizer Design • Test Benches</div>
+            <p class="meta" style="margin-top:8px">RTL implementations of metastability handling circuits with synchronizer designs, comprehensive test benches, and detailed documentation on clock domain crossing techniques.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank">Open</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Dileep Kumar M • Built with HTML, CSS & Firebase</div>
+      <div>© <span id="year"></span> Dileep Kumar M • Built with HTML, CSS & JavaScript</div>
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Firebase Configuration
-    const firebaseConfig = {
-      // REPLACE WITH YOUR FIREBASE CONFIG
-      apiKey: "your-api-key",
-      authDomain: "your-project.firebaseapp.com",
-      projectId: "your-project-id",
-      storageBucket: "your-project.appspot.com",
-      messagingSenderId: "123456789",
-      appId: "your-app-id"
+    // Add subtle animations to elements when they come into view
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
     };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const storage = firebase.storage();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
 
-    // Function to load skills from Firestore
-    async function loadSkills() {
-      try {
-        const skillsContainer = document.getElementById('skills-container');
-        skillsContainer.innerHTML = '<div class="spinner"></div>';
-        
-        const snapshot = await db.collection('skills').orderBy('category').get();
-        const skillsByCategory = {};
-        
-        snapshot.forEach(doc => {
-          const skill = doc.data();
-          if (!skillsByCategory[skill.category]) {
-            skillsByCategory[skill.category] = [];
-          }
-          skillsByCategory[skill.category].push(skill);
-        });
-        
-        let html = '';
-        Object.keys(skillsByCategory).forEach(category => {
-          html += `
-            <div class="card skill-category">
-              <h4>${category}</h4>
-              <div class="tags">
-                ${skillsByCategory[category].map(skill => 
-                  `<span class="tag">${skill.name}</span>`
-                ).join('')}
-              </div>
-            </div>
-          `;
-        });
-        
-        skillsContainer.innerHTML = html;
-      } catch (error) {
-        console.error("Error loading skills:", error);
-        document.getElementById('skills-container').innerHTML = 
-          '<p class="meta">Unable to load skills at this time.</p>';
-      }
-    }
+    // Observe project cards and certificate cards
+    document.querySelectorAll('.project, .cert-card, .skill-category').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
 
-    // Function to load certificates from Firestore
-    async function loadCertificates() {
-      try {
-        const certsContainer = document.getElementById('certificates-container');
-        certsContainer.innerHTML = '<div class="spinner"></div>';
-        
-        const snapshot = await db.collection('certificates').orderBy('date', 'desc').get();
-        
-        let html = '';
-        snapshot.forEach(doc => {
-          const cert = doc.data();
-          html += `
-            <div class="cert-card">
-              <div class="cert-icon">
-                <i class="fas ${cert.type === 'internship' ? 'fa-briefcase' : 'fa-certificate'}"></i>
-              </div>
-              ${cert.imageUrl ? `<img src="${cert.imageUrl}" alt="${cert.title}" class="cert-image">` : ''}
-              <div class="cert-title">${cert.title}</div>
-              <div class="cert-meta">${cert.issuer} • ${cert.date}</div>
-              <p>${cert.description}</p>
-              <div class="proj-actions">
-                ${cert.viewUrl ? `<a class="btn btn-ghost" href="${cert.viewUrl}" target="_blank">View ${cert.type === 'internship' ? 'Offer' : 'Certificate'}</a>` : ''}
-                ${cert.downloadUrl ? `<a class="btn btn-primary" href="${cert.downloadUrl}" target="_blank">Download</a>` : ''}
-              </div>
-            </div>
-          `;
-        });
-        
-        certsContainer.innerHTML = html;
-      } catch (error) {
-        console.error("Error loading certificates:", error);
-        document.getElementById('certificates-container').innerHTML = 
-          '<p class="meta">Unable to load certificates at this time.</p>';
-      }
-    }
-
-    // Function to load projects from Firestore
-    async function loadProjects() {
-      try {
-        const projectsContainer = document.getElementById('projects-container');
-        projectsContainer.innerHTML = '<div class="spinner"></div>';
-        
-        const snapshot = await db.collection('projects').orderBy('order').get();
-        
-        let html = '';
-        snapshot.forEach(doc => {
-          const project = doc.data();
-          html += `
-            <article class="project" role="listitem">
-              <div class="thumb" aria-hidden="true">${project.thumbnail || project.title.substring(0, 10)}</div>
-              <div>
-                <h4 style="margin-top:6px">${project.title}</h4>
-                <div class="meta">${project.technologies}</div>
-                <p class="meta" style="margin-top:8px">${project.description}</p>
-                <div class="proj-actions" style="margin-top:12px">
-                  <a class="btn btn-ghost" href="${project.githubUrl}" target="_blank">View Repo</a>
-                  <a class="btn btn-primary" href="${project.liveUrl || project.githubUrl}" target="_blank">Open</a>
-                </div>
-              </div>
-            </article>
-          `;
-        });
-        
-        projectsContainer.innerHTML = html;
-      } catch (error) {
-        console.error("Error loading projects:", error);
-        document.getElementById('projects-container').innerHTML = 
-          '<p class="meta">Unable to load projects at this time.</p>';
-      }
-    }
-
-    // Function to load highlights
-    async function loadHighlights() {
-      try {
-        const snapshot = await db.collection('highlights').orderBy('order').get();
-        const highlightsContainer = document.getElementById('dynamic-highlights');
-        
-        let html = '';
-        snapshot.forEach(doc => {
-          const highlight = doc.data();
-          html += `<div class="pill">${highlight.text}</div>`;
-        });
-        
-        highlightsContainer.innerHTML = html;
-      } catch (error) {
-        console.error("Error loading highlights:", error);
-      }
-    }
-
-    // Load all data when page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      loadSkills();
-      loadCertificates();
-      loadProjects();
-      loadHighlights();
-      
-      // Add scroll animations
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-
-      // Observe project cards and certificate cards
-      setTimeout(() => {
-        document.querySelectorAll('.project, .cert-card, .skill-category').forEach(card => {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          observer.observe(card);
-        });
-      }, 1000);
+    // Add floating animation to some elements
+    document.querySelectorAll('.logo').forEach(el => {
+      el.classList.add('floating');
     });
   </script>
 </body>
