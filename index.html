@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dileep Kumar M — Portfolio</title>
+  <meta name="description" content="Portfolio of Dileep Kumar M — ECE Engineer, C++ Developer, Embedded Systems Learner." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071022 0%, #081426 60%);color:#e6f0f7}
+    .container{max-width:1000px;margin:40px auto;padding:28px}
+    header{display:flex;align-items:center;gap:20px}
+    .avatar{
+      width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7c3aed);
+      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:#021220;box-shadow:0 6px 18px rgba(3,10,18,0.6)
+    }
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin:6px 0 18px}
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,12,0.6)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+    .project{margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(255,255,255,0.03)}
+    .project h3{margin:0 0 6px;font-size:17px}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7c3aed);color:#021220;text-decoration:none;font-weight:700}
+    footer{color:var(--muted);font-size:13px;margin-top:20px;text-align:center}
+    nav.links{display:flex;gap:10px;flex-wrap:wrap}
+    .side-list{list-style:none;padding:0;margin:0}
+    .side-list li{margin-bottom:10px}
+    .contact a{color:var(--accent);text-decoration:none}
+    /* Responsive */
+    @media(max-width:880px){.grid{grid-template-columns:1fr;}.avatar{width:80px;height:80px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar" aria-hidden="true">DK</div>
+      <div>
+        <h1>Dileep Kumar M</h1>
+        <div class="lead">ECE Engineering Student · C++ Programmer · Embedded Systems Learner</div>
+        <nav class="links">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#contact" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="grid" style="margin-top:20px">
+      <!-- Main column -->
+      <div>
+        <!-- About -->
+        <section class="card" id="about">
+          <div class="section-title">
+            <strong>About</strong>
+          </div>
+          <p style="color:var(--muted);line-height:1.6">
+            Hello, I'm <strong>Dileep Kumar M</strong>.  
+            I am an **Electronics and Communication Engineering (ECE)** student with strong skills in **C++ programming**, problem-solving, and the basics of embedded systems.  
+            I enjoy learning new technologies, creating projects, and improving my logical thinking.
+          </p>
+        </section>
+
+        <!-- Projects -->
+        <section class="card" id="projects" style="margin-top:16px">
+          <div class="section-title">
+            <strong>Projects</strong>
+          </div>
+
+          <article class="project">
+            <h3>C++ Practice Programs</h3>
+            <div class="meta">C++ · Logic Building · OOP Basics</div>
+            <p style="color:var(--muted);margin-top:6px">
+              A collection of C++ programs including arrays, loops, functions, patterns, OOP basics, and small projects for strengthening core programming concepts.
+            </p>
+          </article>
+
+          <article class="project">
+            <h3>ECE Mini Projects (Academic Works)</h3>
+            <div class="meta">Electronics · Circuit Concepts</div>
+            <p style="color:var(--muted);margin-top:6px">
+              Worked on various small academic tasks such as circuit analysis, basic signal operations, and practical labs as part of the ECE curriculum.
+            </p>
+          </article>
+
+        </section>
+      </div>
+
+      <!-- Side column -->
+      <aside>
+        <div class="card">
+          <strong>Skills</strong>
+          <div style="margin-top:10px" class="skills" aria-hidden="true">
+            <span class="skill">C++</span>
+            <span class="skill">Problem Solving</span>
+            <span class="skill">Basic Electronics</span>
+            <span class="skill">OOP Concepts</span>
+            <span class="skill">ECE Engineering</span>
+          </div>
+
+          <hr style="border:none;border-top:1px dashed rgba(255,255,255,0.03);margin:14px 0">
+
+          <div id="contact">
+            <strong>Contact</strong>
+            <ul class="side-list" style="margin-top:8px">
+              <li>Email: <a class="contact" href="mailto:dileepindo@gmail.com">dileepindo@gmail.com</a></li>
+              <li>Phone: <span style="color:var(--accent)">8431271011</span></li>
+              <li>GitHub: <a class="contact" href="https://github.com/dileepkumar33" target="_blank">github.com/dileepkumar33</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>
+      <div style="margin-top:18px">© 2025 Dileep Kumar M — All Rights Reserved</div>
+    </footer>
+  </div>
+</body>
+  </html>
