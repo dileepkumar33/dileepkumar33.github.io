@@ -4,245 +4,256 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dileep Kumar M — Portfolio</title>
-  <meta name="description" content="Dileep Kumar M — ECE • C++ • Embedded prototypes • ADAS & IoT projects" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Dileep Kumar M — ECE • C++ • Embedded prototypes" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ===== VARIABLES ===== */
     :root{
-      --bg: #0b1020;
-      --card: #0f1724;
-      --muted: #9aa4b2;
-      --accent: #6ee7b7;   /* soft mint */
-      --accent-2: #60a5fa; /* cool blue */
-      --glass: rgba(255,255,255,0.03);
-      --maxw: 1200px;
+      --bg: #f7fbfc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --text: #0f1724;
+      --accent: #0ea5a3;
+      --accent-2: #60a5fa;
+      --glass: rgba(15,23,36,0.04);
+      --maxw: 1100px;
+      --radius: 12px;
+      --gap: 16px;
       font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
+
+    /* ===== BASE ===== */
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:
-      radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.06), transparent 8%),
-      radial-gradient(900px 500px at 90% 90%, rgba(110,231,183,0.03), transparent 8%),
-      var(--bg);
-      color:#e6eef6;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    .wrap{max-width:var(--maxw);margin:36px auto;padding:28px}
-    /* Header / Hero */
-    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:18px}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .page{max-width:var(--maxw);margin:28px auto;padding:20px}
+    .row{display:flex;gap:var(--gap);align-items:center}
+    .stack{display:flex;flex-direction:column;gap:var(--gap)}
+    h1,h2,h3{margin:0}
+    p{margin:0}
+
+    /* ===== HEADER ===== */
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 4px}
+    .brand{display:flex;align-items:center;gap:12px}
     .logo{
-      width:84px;height:84px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;color:#022029;box-shadow:0 10px 30px rgba(2,20,32,0.6)
+      width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:22px;box-shadow:0 10px 30px rgba(14,165,183,0.12)
     }
-    .title {line-height:1}
-    h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-0.6px}
-    .subtitle{color:var(--muted);margin-top:6px;font-size:14px}
-    nav.actions{display:flex;gap:10px}
-    .btn{padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid rgba(255,255,255,0.04);text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#022029;border:none;box-shadow:0 14px 30px rgba(14,165,183,0.12)}
-    .btn-ghost{background:transparent;color:var(--muted)}
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:26px;align-items:center}
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02), transparent);padding:30px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 18px 50px rgba(2,6,12,0.6)}
-    .hero h2{margin:0;font-size:40px;line-height:1.03}
-    .hero p.lead{color:var(--muted);margin-top:14px;font-size:16px;max-width:720px}
-    .highlights{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-    .highlight{background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:12px;font-weight:700;font-size:13px;color:var(--muted)}
-    /* Projects grid */
-    .section{margin-top:28px}
-    .section h3{margin:0 0 12px 0;font-size:20px}
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .project-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-      border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);
-      transition:transform .25s ease, box-shadow .25s ease;
+    .name{line-height:1}
+    .name h1{font-size:20px}
+    .name .sub{font-size:13px;color:var(--muted);margin-top:4px}
+
+    nav.top-actions{display:flex;gap:10px;align-items:center}
+    .btn{padding:9px 12px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid transparent;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#022;box-shadow:0 10px 25px rgba(14,165,183,0.08)}
+    .btn-ghost{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--text)}
+
+    /* ===== HERO ===== */
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start;margin-top:18px}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,12,0.04)}
+    .hero-left h2{font-size:26px;line-height:1.02}
+    .lead{color:var(--muted);margin-top:10px;font-size:15px;line-height:1.6}
+
+    .highlights{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+    .pill{background:rgba(14,165,183,0.08);padding:8px 10px;border-radius:999px;font-weight:600;color:var(--accent);font-size:13px}
+
+    /* ===== PROJECTS ===== */
+    .projects{margin-top:20px}
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+      margin-top:12px;
     }
-    .project-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,12,0.6)}
+    .project{
+      display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg, rgba(2,6,23,0.01), transparent);padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.03)
+    }
     .thumb{
-      width:100%;height:140px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));
-      display:flex;align-items:center;justify-content:center;color:#022029;font-weight:800;font-size:22px;letter-spacing:0.6px;
+      width:100%;height:130px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#022;font-weight:800;font-size:18px;
     }
-    .proj-body{padding:12px 4px}
-    .proj-title{font-size:16px;margin:0;font-weight:800}
-    .proj-meta{color:var(--muted);font-size:13px;margin-top:6px}
-    .proj-actions{display:flex;gap:10px;margin-top:12px}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;color:var(--muted)}
-    /* Sidebar */
-    aside.sidebar{padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.03)}
-    .side-section{margin-bottom:18px}
-    .big-cta{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-    .contact-line{color:var(--muted);font-size:14px}
-    /* Footer */
-    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
-    /* Responsive */
-    @media (max-width:1100px){
-      .projects-grid{grid-template-columns:repeat(2,1fr)}
+    .meta{color:var(--muted);font-size:13px}
+    .proj-actions{display:flex;gap:8px;margin-top:auto}
+    .proj-actions .btn{flex:1}
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{display:flex;flex-direction:column;gap:12px}
+    .contact-line{color:var(--muted);font-size:14px;line-height:1.5}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{background:rgba(2,6,23,0.02);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* ===== FOOTER ===== */
+    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px;padding:8px 0}
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:900px){
       .hero{grid-template-columns:1fr}
-      .hero .hero-card{order:2}
+      .hero-right{order:2}
+      nav.top-actions{display:none} /* simplify on small screens */
     }
-    @media (max-width:700px){
-      .projects-grid{grid-template-columns:1fr}
-      .logo{width:72px;height:72px}
-      .hero h2{font-size:28px}
+    @media (max-width:520px){
+      .logo{width:56px;height:56px;font-size:18px}
+      .hero-left h2{font-size:20px}
+      .thumb{height:110px}
+      .btn{padding:10px;font-size:13px}
     }
-    /* Print */
-    @media print{
-      body{background:white;color:black}
-      .btn, nav.actions {display:none}
-    }
+
+    /* small visual tweaks for clarity */
+    code{background:#eef6f7;padding:3px 6px;border-radius:6px;font-size:13px}
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="page">
+    <!-- HEADER -->
     <header>
       <div class="brand">
         <div class="logo" aria-hidden="true">DK</div>
-        <div class="title">
+        <div class="name">
           <h1>Dileep Kumar M</h1>
-          <div class="subtitle">ECE • C++ • Embedded Prototypes — ADAS, IoT, RTL experiments</div>
+          <div class="sub">ECE • C++ • Embedded prototypes</div>
         </div>
       </div>
 
-      <nav class="actions" aria-label="Top actions">
+      <nav class="top-actions" aria-label="Top actions">
         <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">GitHub</a>
         <a class="btn btn-ghost" href="#projects">Projects</a>
         <a class="btn btn-primary" href="#contact">Contact</a>
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" aria-label="Hero">
-      <div class="hero-card">
-        <h2>Building clear embedded demos & project-grade code</h2>
-        <p class="lead">I’m Dileep — an ECE student focusing on C++ and embedded systems. I document projects carefully on GitHub and build prototypes that are demonstrable and reproducible. Here are my highlighted projects — click any to open the repo.</p>
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <div class="card hero-left">
+        <h2>Hi — I'm Dileep. I build small, working embedded demos and clean C++ projects.</h2>
+        <p class="lead">Electronics & Communication engineering student with practical experience in STM32, ESP32, Verilog experiments, and many C++ projects. I write clear READMEs and aim for reproducible demos you can run locally or on a dev board.</p>
 
         <div class="highlights" aria-hidden="true">
-          <div class="highlight">C++ • OOP</div>
-          <div class="highlight">STM32 • Arduino IDE</div>
-          <div class="highlight">Signal Concepts</div>
-          <div class="highlight">RTL & Verilog</div>
+          <div class="pill">C++ • OOP</div>
+          <div class="pill">STM32 • Arduino IDE</div>
+          <div class="pill">ESP32 • IoT</div>
+          <div class="pill">Verilog • RTL</div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#projects">See Featured Projects</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
       </div>
 
-      <aside class="sidebar" aria-label="Sidebar">
-        <div class="side-section">
+      <aside class="sidebar">
+        <div class="card">
           <strong>Contact</strong>
-          <div class="contact-line" style="margin-top:8px">
+          <div class="contact-line" id="contact" style="margin-top:8px">
             Email: <a href="mailto:dileepindo@gmail.com">dileepindo@gmail.com</a><br>
             Phone: <a href="tel:+918431271011">+91 84312 71011</a><br>
-            GitHub: <a href="https://github.com/dileepkumar33" target="_blank" rel="noopener">github.com/dileepkumar33</a>
+            GitHub: <a href="https://github.com/dileepkumar33" target="_blank">github.com/dileepkumar33</a>
           </div>
-
-          <div class="big-cta">
-            <a class="btn btn-primary" href="mailto:dileepindo@gmail.com">Email Me</a>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <a class="btn btn-primary" href="mailto:dileepindo@gmail.com">Email</a>
             <a class="btn btn-ghost" href="tel:+918431271011">Call</a>
           </div>
         </div>
 
-        <div class="side-section">
+        <div class="card">
           <strong>Skills</strong>
-          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <div class="tags">
             <span class="tag">C++</span>
             <span class="tag">Embedded</span>
             <span class="tag">STM32</span>
-            <span class="tag">RTL • Verilog</span>
-            <span class="tag">Signal Processing</span>
-            <span class="tag">Git</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">Verilog</span>
+            <span class="tag">Signal Concepts</span>
           </div>
         </div>
 
-        <div class="side-section">
+        <div class="card">
           <strong>Availability</strong>
-          <div class="contact-line" style="margin-top:8px">Open to internships, freelance projects, and collaborations. Remote OK.</div>
+          <div class="contact-line" style="margin-top:8px">Open to internships, collaborations, and freelance work. Remote OK.</div>
         </div>
       </aside>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section" aria-labelledby="projects-title">
+    <!-- PROJECTS -->
+    <section class="projects" aria-labelledby="projects-title">
       <h3 id="projects-title">Featured Projects</h3>
 
       <div class="projects-grid" role="list">
-        <!-- 1 -->
-        <div class="project-card" role="listitem">
-          <div class="thumb">Library-CPP</div>
-          <div class="proj-body">
-            <h4 class="proj-title">library-management-system-cpp</h4>
-            <div class="proj-meta">C++ • Console project • Data structures practice</div>
-            <div class="proj-actions">
-              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank" rel="noopener">View Repo</a>
-              <a class="btn btn-primary" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank" rel="noopener">Open</a>
+        <!-- library-management-system-cpp -->
+        <article class="project" role="listitem">
+          <div class="thumb" aria-hidden="true">Library • C++</div>
+          <div>
+            <h4 style="margin-top:6px">library-management-system-cpp</h4>
+            <div class="meta">C++ • Console project • Data structures practice</div>
+            <p class="meta" style="margin-top:8px">A beginner-friendly library management console application implementing basic CRUD operations, file saving, and simple search features.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank">Open</a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- 2 -->
-        <div class="project-card" role="listitem">
+        <!-- PulseSensor-ESP32 -->
+        <article class="project" role="listitem">
           <div class="thumb">Pulse • ESP32</div>
-          <div class="proj-body">
-            <h4 class="proj-title">PulseSensor-ESP32</h4>
-            <div class="proj-meta">ESP32 • IoT Dashboard • Blynk • Hackathon project (demo)</div>
-            <div class="proj-actions">
-              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank" rel="noopener">View Repo</a>
-              <a class="btn btn-primary" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank" rel="noopener">Open</a>
+          <div>
+            <h4 style="margin-top:6px">PulseSensor-ESP32</h4>
+            <div class="meta">ESP32 • IoT • Blynk</div>
+            <p class="meta" style="margin-top:8px">ESP32 pulse sensor demo with Blynk dashboard integration — demonstrates reading, smoothing, and remote display of BPM data.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank">Open</a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- 3 -->
-        <div class="project-card" role="listitem">
-          <div class="thumb">ADAS</div>
-          <div class="proj-body">
-            <h4 class="proj-title">adas-level1-stm32</h4>
-            <div class="proj-meta">STM32 • Arduino IDE • ADAS Level 1 prototype • Sensor integration</div>
-            <div class="proj-actions">
-              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank" rel="noopener">View Repo</a>
-              <a class="btn btn-primary" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank" rel="noopener">Open</a>
+        <!-- adas-level1-stm32 -->
+        <article class="project" role="listitem">
+          <div class="thumb">ADAS • STM32</div>
+          <div>
+            <h4 style="margin-top:6px">adas-level1-stm32</h4>
+            <div class="meta">STM32 • Arduino IDE • Sensor integration</div>
+            <p class="meta" style="margin-top:8px">A Level-1 ADAS prototype using STM32: lane/obstacle demos, sensor interface examples, and logging for analysis.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank">Open</a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- 4 -->
-        <div class="project-card" role="listitem">
-          <div class="thumb">RTL</div>
-          <div class="proj-body">
-            <h4 class="proj-title">rtl-metastability-handling</h4>
-            <div class="proj-meta">Verilog • RTL-level metastability handling • Synchronizer design</div>
-            <div class="proj-actions">
-              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank" rel="noopener">View Repo</a>
-              <a class="btn btn-primary" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank" rel="noopener">Open</a>
+        <!-- rtl-metastability-handling -->
+        <article class="project" role="listitem">
+          <div class="thumb">RTL • Verilog</div>
+          <div>
+            <h4 style="margin-top:6px">rtl-metastability-handling</h4>
+            <div class="meta">Verilog • Synchronizer design</div>
+            <p class="meta" style="margin-top:8px">RTL-level metastability handling circuit and synchronizer examples with test benches and notes.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank">Open</a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- 5: extra placeholder for future -->
-        <div class="project-card" role="listitem">
+        <!-- Additional: all repos -->
+        <article class="project" role="listitem">
           <div class="thumb">More</div>
-          <div class="proj-body">
-            <h4 class="proj-title">Other experiments</h4>
-            <div class="proj-meta">Small ECE labs, notes, and practice code — see my GitHub for the full list.</div>
-            <div class="proj-actions">
-              <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">All Repos</a>
-              <a class="btn btn-primary" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">Open</a>
+          <div>
+            <h4 style="margin-top:6px">Other experiments & notes</h4>
+            <div class="meta">Misc ECE labs, practice code, READMEs</div>
+            <p class="meta" style="margin-top:8px">See the full list on GitHub.</p>
+            <div class="proj-actions" style="margin-top:12px">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank">All Repos</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33" target="_blank">Open</a>
             </div>
           </div>
-        </div>
-
-        <!-- 6: optional -->
-        <div class="project-card" role="listitem">
-          <div class="thumb">Docs</div>
-          <div class="proj-body">
-            <h4 class="proj-title">Documentation & Notes</h4>
-            <div class="proj-meta">State-space solutions, signal operations notes, and README-driven tutorials.</div>
-            <div class="proj-actions">
-              <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">View Notes</a>
-            </div>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Dileep Kumar M • Built with care • <span style="color:var(--muted)">Hosted on GitHub Pages</span></div>
+      <div>© <span id="year"></span> Dileep Kumar M • Built with responsive layout</div>
     </footer>
   </div>
 
@@ -250,4 +261,4 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
-</html>
+              </html>
