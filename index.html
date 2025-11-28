@@ -4,162 +4,245 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dileep Kumar M — Portfolio</title>
-  <meta name="description" content="Dileep Kumar M — ECE student, C++ developer, embedded systems learner. Contact: dileepindo@gmail.com" />
+  <meta name="description" content="Dileep Kumar M — ECE • C++ • Embedded prototypes • ADAS & IoT projects" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #ffffff;
-      --card: #f8fafc;
-      --text: #0f1724;
-      --muted: #6b7280;
-      --accent: #0ea5b7;
-      --glass: rgba(15,23,36,0.04);
-      --maxw: 960px;
+      --bg: #0b1020;
+      --card: #0f1724;
+      --muted: #9aa4b2;
+      --accent: #6ee7b7;   /* soft mint */
+      --accent-2: #60a5fa; /* cool blue */
+      --glass: rgba(255,255,255,0.03);
+      --maxw: 1200px;
       font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-    .wrap{max-width:var(--maxw);margin:36px auto;padding:32px}
-    .top{display:flex;align-items:center;gap:20px}
-    .photo{
-      width:96px;height:96px;border-radius:14px;background:linear-gradient(180deg,#e6f9fb,#d8f3f5);
-      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:var(--accent);box-shadow:0 6px 18px rgba(16,24,40,0.06)
+    html,body{height:100%;margin:0;background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.06), transparent 8%),
+      radial-gradient(900px 500px at 90% 90%, rgba(110,231,183,0.03), transparent 8%),
+      var(--bg);
+      color:#e6eef6;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:28px}
+    /* Header / Hero */
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:18px}
+    .logo{
+      width:84px;height:84px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;color:#022029;box-shadow:0 10px 30px rgba(2,20,32,0.6)
     }
-    h1{margin:0;font-size:28px;letter-spacing:-0.2px}
-    .role{margin-top:6px;color:var(--muted);font-size:15px}
-    .actions{margin-left:auto;display:flex;gap:10px}
-    .btn{
-      border:1px solid transparent;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;
-      display:inline-flex;align-items:center;gap:8px;
+    .title {line-height:1}
+    h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-0.6px}
+    .subtitle{color:var(--muted);margin-top:6px;font-size:14px}
+    nav.actions{display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid rgba(255,255,255,0.04);text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#022029;border:none;box-shadow:0 14px 30px rgba(14,165,183,0.12)}
+    .btn-ghost{background:transparent;color:var(--muted)}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:26px;align-items:center}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02), transparent);padding:30px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 18px 50px rgba(2,6,12,0.6)}
+    .hero h2{margin:0;font-size:40px;line-height:1.03}
+    .hero p.lead{color:var(--muted);margin-top:14px;font-size:16px;max-width:720px}
+    .highlights{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+    .highlight{background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:12px;font-weight:700;font-size:13px;color:var(--muted)}
+    /* Projects grid */
+    .section{margin-top:28px}
+    .section h3{margin:0 0 12px 0;font-size:20px}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
-    .btn-primary{background:var(--accent);color:white;border-color:var(--accent);box-shadow:0 6px 18px rgba(14,165,183,0.12)}
-    .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(15,23,36,0.06)}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:28px;margin-top:28px}
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(15,23,36,0.04)}
-    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{padding:6px 10px;border-radius:999px;background:var(--glass);font-size:13px;color:var(--muted)}
-    .project{margin-bottom:14px}
-    .project h3{margin:0;font-size:16px}
-    .meta{color:var(--muted);font-size:13px;margin-top:6px}
-    .lead{color:var(--muted);line-height:1.6}
-    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
-    a {color:inherit}
-    /* small screens */
-    @media (max-width:880px){
-      .grid{grid-template-columns:1fr}
-      .actions{margin-left:0;margin-top:10px}
-      .top{flex-direction:column;align-items:flex-start;gap:14px}
-      .photo{width:84px;height:84px;font-size:26px}
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,12,0.6)}
+    .thumb{
+      width:100%;height:140px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      display:flex;align-items:center;justify-content:center;color:#022029;font-weight:800;font-size:22px;letter-spacing:0.6px;
     }
-    /* print */
-    @media print {
+    .proj-body{padding:12px 4px}
+    .proj-title{font-size:16px;margin:0;font-weight:800}
+    .proj-meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .proj-actions{display:flex;gap:10px;margin-top:12px}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;color:var(--muted)}
+    /* Sidebar */
+    aside.sidebar{padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.03)}
+    .side-section{margin-bottom:18px}
+    .big-cta{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .contact-line{color:var(--muted);font-size:14px}
+    /* Footer */
+    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
+    /* Responsive */
+    @media (max-width:1100px){
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .hero{grid-template-columns:1fr}
+      .hero .hero-card{order:2}
+    }
+    @media (max-width:700px){
+      .projects-grid{grid-template-columns:1fr}
+      .logo{width:72px;height:72px}
+      .hero h2{font-size:28px}
+    }
+    /* Print */
+    @media print{
       body{background:white;color:black}
-      .btn, .actions {display:none}
-      .wrap{padding:12px}
+      .btn, nav.actions {display:none}
     }
   </style>
 </head>
 <body>
-  <div class="wrap" role="main">
-    <header class="top" aria-label="Header">
-      <div class="photo" aria-hidden="true">DK</div>
-      <div>
-        <h1>Dileep Kumar M</h1>
-        <div class="role">ECE — Electronics & Communication Engineering • C++ • Embedded basics</div>
-        <div style="margin-top:8px;color:var(--muted);font-size:14px">Focused on building solid fundamentals, small embedded demos, and readable code.</div>
-        <div style="margin-top:10px" class="actions">
-          <a class="btn btn-primary" href="#projects">Projects</a>
-          <a class="btn btn-ghost" href="#contact">Contact</a>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">DK</div>
+        <div class="title">
+          <h1>Dileep Kumar M</h1>
+          <div class="subtitle">ECE • C++ • Embedded Prototypes — ADAS, IoT, RTL experiments</div>
         </div>
       </div>
+
+      <nav class="actions" aria-label="Top actions">
+        <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="#projects">Projects</a>
+        <a class="btn btn-primary" href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <main class="grid" aria-label="Main content">
-      <!-- left: main -->
-      <div>
-        <section class="card" id="about" aria-labelledby="about-title">
-          <div class="section-title"><strong id="about-title">About</strong></div>
-          <p class="lead">
-            Hello — I'm <strong>Dileep Kumar M</strong>, an Electronics & Communication Engineering student with strong C++ skills and a keen interest in embedded systems and practical hardware demos. I write clear code, document my projects on GitHub, and enjoy turning circuit & signal concepts into small working prototypes.
-          </p>
-          <p class="lead" style="margin-top:10px">Open to internships, collaborative projects, and freelance work.</p>
-        </section>
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-card">
+        <h2>Building clear embedded demos & project-grade code</h2>
+        <p class="lead">I’m Dileep — an ECE student focusing on C++ and embedded systems. I document projects carefully on GitHub and build prototypes that are demonstrable and reproducible. Here are my highlighted projects — click any to open the repo.</p>
 
-        <section class="card" id="projects" style="margin-top:18px" aria-labelledby="projects-title">
-          <div class="section-title"><strong id="projects-title">Selected Projects</strong></div>
-
-          <article class="project">
-            <h3>Portfolio (This site)</h3>
-            <div class="meta">HTML • Minimal UI • GitHub Pages</div>
-            <p class="lead" style="margin-top:8px">A minimal portfolio built to show projects, skills, and contact details. Host on GitHub Pages at <code>dileepkumar33.github.io</code>.</p>
-          </article>
-
-          <article class="project">
-            <h3>C++ Practice Programs</h3>
-            <div class="meta">C++ • OOP • Data structures practice</div>
-            <p class="lead" style="margin-top:8px">Collections of focused examples: arrays, pointers, OOP basics, small console projects to build problem solving skills.</p>
-          </article>
-
-          <article class="project">
-            <h3>Academic ECE Mini-Projects</h3>
-            <div class="meta">Circuits • Signal handling • Lab work</div>
-            <p class="lead" style="margin-top:8px">Circuit experiments and signal processing examples from coursework — documented for clarity and repeatability.</p>
-          </article>
-
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btn-primary" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">View GitHub</a>
-            <a class="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-          </div>
-        </section>
-
-        <section class="card" style="margin-top:18px" aria-labelledby="education-title">
-          <div class="section-title"><strong id="education-title">Education</strong></div>
-          <p class="lead"><strong>B.Tech — Electronics & Communication Engineering</strong><br>Coursework: Signals & Systems, Embedded Systems basics, Digital Electronics.</p>
-        </section>
+        <div class="highlights" aria-hidden="true">
+          <div class="highlight">C++ • OOP</div>
+          <div class="highlight">STM32 • Arduino IDE</div>
+          <div class="highlight">Signal Concepts</div>
+          <div class="highlight">RTL & Verilog</div>
+        </div>
       </div>
 
-      <!-- right: sidebar -->
-      <aside>
-        <div class="card" aria-labelledby="skills-title">
-          <strong id="skills-title">Skills</strong>
-          <div style="margin-top:10px" class="skills" aria-hidden="true">
-            <span class="chip">C++</span>
-            <span class="chip">OOP</span>
-            <span class="chip">Basic Embedded</span>
-            <span class="chip">Signal Concepts</span>
-            <span class="chip">Circuit Analysis</span>
-            <span class="chip">Git</span>
-          </div>
-        </div>
-
-        <div style="height:14px"></div>
-
-        <div class="card" id="contact" aria-labelledby="contact-title">
-          <strong id="contact-title">Contact</strong>
-          <div style="margin-top:10px;color:var(--muted);font-size:14px;line-height:1.5">
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="side-section">
+          <strong>Contact</strong>
+          <div class="contact-line" style="margin-top:8px">
             Email: <a href="mailto:dileepindo@gmail.com">dileepindo@gmail.com</a><br>
             Phone: <a href="tel:+918431271011">+91 84312 71011</a><br>
             GitHub: <a href="https://github.com/dileepkumar33" target="_blank" rel="noopener">github.com/dileepkumar33</a>
           </div>
-          <div style="margin-top:12px;display:flex;gap:8px">
-            <a class="btn btn-primary" href="mailto:dileepindo@gmail.com">Email me</a>
+
+          <div class="big-cta">
+            <a class="btn btn-primary" href="mailto:dileepindo@gmail.com">Email Me</a>
             <a class="btn btn-ghost" href="tel:+918431271011">Call</a>
           </div>
         </div>
 
-        <div style="height:14px"></div>
+        <div class="side-section">
+          <strong>Skills</strong>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <span class="tag">C++</span>
+            <span class="tag">Embedded</span>
+            <span class="tag">STM32</span>
+            <span class="tag">RTL • Verilog</span>
+            <span class="tag">Signal Processing</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
 
-        <div class="card">
+        <div class="side-section">
           <strong>Availability</strong>
-          <p class="meta" style="margin-top:8px">Open to internships, project collaborations, and freelance work. Remote OK.</p>
+          <div class="contact-line" style="margin-top:8px">Open to internships, freelance projects, and collaborations. Remote OK.</div>
         </div>
       </aside>
-    </main>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <h3 id="projects-title">Featured Projects</h3>
+
+      <div class="projects-grid" role="list">
+        <!-- 1 -->
+        <div class="project-card" role="listitem">
+          <div class="thumb">Library-CPP</div>
+          <div class="proj-body">
+            <h4 class="proj-title">library-management-system-cpp</h4>
+            <div class="proj-meta">C++ • Console project • Data structures practice</div>
+            <div class="proj-actions">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank" rel="noopener">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/library-management-system-cpp" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="project-card" role="listitem">
+          <div class="thumb">Pulse • ESP32</div>
+          <div class="proj-body">
+            <h4 class="proj-title">PulseSensor-ESP32</h4>
+            <div class="proj-meta">ESP32 • IoT Dashboard • Blynk • Hackathon project (demo)</div>
+            <div class="proj-actions">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank" rel="noopener">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/PulseSensor-ESP32" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="project-card" role="listitem">
+          <div class="thumb">ADAS</div>
+          <div class="proj-body">
+            <h4 class="proj-title">adas-level1-stm32</h4>
+            <div class="proj-meta">STM32 • Arduino IDE • ADAS Level 1 prototype • Sensor integration</div>
+            <div class="proj-actions">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank" rel="noopener">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/adas-level1-stm32" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="project-card" role="listitem">
+          <div class="thumb">RTL</div>
+          <div class="proj-body">
+            <h4 class="proj-title">rtl-metastability-handling</h4>
+            <div class="proj-meta">Verilog • RTL-level metastability handling • Synchronizer design</div>
+            <div class="proj-actions">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank" rel="noopener">View Repo</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33/rtl-metastability-handling" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5: extra placeholder for future -->
+        <div class="project-card" role="listitem">
+          <div class="thumb">More</div>
+          <div class="proj-body">
+            <h4 class="proj-title">Other experiments</h4>
+            <div class="proj-meta">Small ECE labs, notes, and practice code — see my GitHub for the full list.</div>
+            <div class="proj-actions">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">All Repos</a>
+              <a class="btn btn-primary" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6: optional -->
+        <div class="project-card" role="listitem">
+          <div class="thumb">Docs</div>
+          <div class="proj-body">
+            <h4 class="proj-title">Documentation & Notes</h4>
+            <div class="proj-meta">State-space solutions, signal operations notes, and README-driven tutorials.</div>
+            <div class="proj-actions">
+              <a class="btn btn-ghost" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">View Notes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <div>© <span id="year"></span> Dileep Kumar M • Built with a minimal design</div>
+      <div>© <span id="year"></span> Dileep Kumar M • Built with care • <span style="color:var(--muted)">Hosted on GitHub Pages</span></div>
     </footer>
   </div>
 
