@@ -201,6 +201,36 @@
       transform: translateY(-1px);
     }
 
+    /* ===== PROFILE IMAGE STYLES ===== */
+    .profile-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      display: block;
+      border: 4px solid white;
+      box-shadow: 0 10px 30px rgba(2,6,12,0.1);
+      transition: var(--transition);
+    }
+    .profile-image:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 40px rgba(2,6,12,0.15);
+    }
+    .profile-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .profile-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .profile-title {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     /* ===== PROJECTS ===== */
     .projects h3 {
       font-size: 24px;
@@ -356,6 +386,10 @@
       .thumb {
         height: 130px;
       }
+      .profile-image {
+        width: 140px;
+        height: 140px;
+      }
     }
     @media (max-width: 520px) {
       .page {
@@ -370,6 +404,10 @@
       }
       .hero-left h2 {
         font-size: 22px;
+      }
+      .profile-image {
+        width: 120px;
+        height: 120px;
       }
     }
 
@@ -426,6 +464,15 @@
       </div>
 
       <aside class="sidebar">
+        <!-- Profile Photo Card -->
+        <div class="card" style="text-align: center;">
+          <img src="profile.jpg" alt="Dileep Kumar M" class="profile-image">
+          <div class="profile-header">
+            <div class="profile-name">Dileep Kumar M</div>
+            <div class="profile-title">ECE Student & Embedded Developer</div>
+          </div>
+        </div>
+
         <div class="card">
           <strong>Contact</strong>
           <div class="contact-line" id="contact" style="margin-top:8px">
@@ -608,4 +655,4 @@
     });
   </script>
 </body>
-  </html>
+            </html>
