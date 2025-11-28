@@ -4,126 +4,167 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dileep Kumar M — Portfolio</title>
-  <meta name="description" content="Portfolio of Dileep Kumar M — ECE Engineer, C++ Developer, Embedded Systems Learner." />
+  <meta name="description" content="Dileep Kumar M — ECE student, C++ developer, embedded systems learner. Contact: dileepindo@gmail.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4;
-      --glass: rgba(255,255,255,0.03);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg: #ffffff;
+      --card: #f8fafc;
+      --text: #0f1724;
+      --muted: #6b7280;
+      --accent: #0ea5b7;
+      --glass: rgba(15,23,36,0.04);
+      --maxw: 960px;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071022 0%, #081426 60%);color:#e6f0f7}
-    .container{max-width:1000px;margin:40px auto;padding:28px}
-    header{display:flex;align-items:center;gap:20px}
-    .avatar{
-      width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7c3aed);
-      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:#021220;box-shadow:0 6px 18px rgba(3,10,18,0.6)
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:32px}
+    .top{display:flex;align-items:center;gap:20px}
+    .photo{
+      width:96px;height:96px;border-radius:14px;background:linear-gradient(180deg,#e6f9fb,#d8f3f5);
+      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:var(--accent);box-shadow:0 6px 18px rgba(16,24,40,0.06)
     }
-    h1{margin:0;font-size:28px}
-    p.lead{color:var(--muted);margin:6px 0 18px}
-    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,12,0.6)}
-    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    h1{margin:0;font-size:28px;letter-spacing:-0.2px}
+    .role{margin-top:6px;color:var(--muted);font-size:15px}
+    .actions{margin-left:auto;display:flex;gap:10px}
+    .btn{
+      border:1px solid transparent;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .btn-primary{background:var(--accent);color:white;border-color:var(--accent);box-shadow:0 6px 18px rgba(14,165,183,0.12)}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(15,23,36,0.06)}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:28px;margin-top:28px}
+    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(15,23,36,0.04)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
-    .project{margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(255,255,255,0.03)}
-    .project h3{margin:0 0 6px;font-size:17px}
-    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7c3aed);color:#021220;text-decoration:none;font-weight:700}
-    footer{color:var(--muted);font-size:13px;margin-top:20px;text-align:center}
-    nav.links{display:flex;gap:10px;flex-wrap:wrap}
-    .side-list{list-style:none;padding:0;margin:0}
-    .side-list li{margin-bottom:10px}
-    .contact a{color:var(--accent);text-decoration:none}
-    /* Responsive */
-    @media(max-width:880px){.grid{grid-template-columns:1fr;}.avatar{width:80px;height:80px}}
+    .chip{padding:6px 10px;border-radius:999px;background:var(--glass);font-size:13px;color:var(--muted)}
+    .project{margin-bottom:14px}
+    .project h3{margin:0;font-size:16px}
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .lead{color:var(--muted);line-height:1.6}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    a {color:inherit}
+    /* small screens */
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr}
+      .actions{margin-left:0;margin-top:10px}
+      .top{flex-direction:column;align-items:flex-start;gap:14px}
+      .photo{width:84px;height:84px;font-size:26px}
+    }
+    /* print */
+    @media print {
+      body{background:white;color:black}
+      .btn, .actions {display:none}
+      .wrap{padding:12px}
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="avatar" aria-hidden="true">DK</div>
+  <div class="wrap" role="main">
+    <header class="top" aria-label="Header">
+      <div class="photo" aria-hidden="true">DK</div>
       <div>
         <h1>Dileep Kumar M</h1>
-        <div class="lead">ECE Engineering Student · C++ Programmer · Embedded Systems Learner</div>
-        <nav class="links">
-          <a href="#projects" class="btn">View Projects</a>
-          <a href="#contact" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)">Contact</a>
-        </nav>
+        <div class="role">ECE — Electronics & Communication Engineering • C++ • Embedded basics</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:14px">Focused on building solid fundamentals, small embedded demos, and readable code.</div>
+        <div style="margin-top:10px" class="actions">
+          <a class="btn btn-primary" href="#projects">Projects</a>
+          <a class="btn btn-ghost" href="#contact">Contact</a>
+        </div>
       </div>
     </header>
 
-    <main class="grid" style="margin-top:20px">
-      <!-- Main column -->
+    <main class="grid" aria-label="Main content">
+      <!-- left: main -->
       <div>
-        <!-- About -->
-        <section class="card" id="about">
-          <div class="section-title">
-            <strong>About</strong>
-          </div>
-          <p style="color:var(--muted);line-height:1.6">
-            Hello, I'm <strong>Dileep Kumar M</strong>.  
-            I am an **Electronics and Communication Engineering (ECE)** student with strong skills in **C++ programming**, problem-solving, and the basics of embedded systems.  
-            I enjoy learning new technologies, creating projects, and improving my logical thinking.
+        <section class="card" id="about" aria-labelledby="about-title">
+          <div class="section-title"><strong id="about-title">About</strong></div>
+          <p class="lead">
+            Hello — I'm <strong>Dileep Kumar M</strong>, an Electronics & Communication Engineering student with strong C++ skills and a keen interest in embedded systems and practical hardware demos. I write clear code, document my projects on GitHub, and enjoy turning circuit & signal concepts into small working prototypes.
           </p>
+          <p class="lead" style="margin-top:10px">Open to internships, collaborative projects, and freelance work.</p>
         </section>
 
-        <!-- Projects -->
-        <section class="card" id="projects" style="margin-top:16px">
-          <div class="section-title">
-            <strong>Projects</strong>
-          </div>
+        <section class="card" id="projects" style="margin-top:18px" aria-labelledby="projects-title">
+          <div class="section-title"><strong id="projects-title">Selected Projects</strong></div>
+
+          <article class="project">
+            <h3>Portfolio (This site)</h3>
+            <div class="meta">HTML • Minimal UI • GitHub Pages</div>
+            <p class="lead" style="margin-top:8px">A minimal portfolio built to show projects, skills, and contact details. Host on GitHub Pages at <code>dileepkumar33.github.io</code>.</p>
+          </article>
 
           <article class="project">
             <h3>C++ Practice Programs</h3>
-            <div class="meta">C++ · Logic Building · OOP Basics</div>
-            <p style="color:var(--muted);margin-top:6px">
-              A collection of C++ programs including arrays, loops, functions, patterns, OOP basics, and small projects for strengthening core programming concepts.
-            </p>
+            <div class="meta">C++ • OOP • Data structures practice</div>
+            <p class="lead" style="margin-top:8px">Collections of focused examples: arrays, pointers, OOP basics, small console projects to build problem solving skills.</p>
           </article>
 
           <article class="project">
-            <h3>ECE Mini Projects (Academic Works)</h3>
-            <div class="meta">Electronics · Circuit Concepts</div>
-            <p style="color:var(--muted);margin-top:6px">
-              Worked on various small academic tasks such as circuit analysis, basic signal operations, and practical labs as part of the ECE curriculum.
-            </p>
+            <h3>Academic ECE Mini-Projects</h3>
+            <div class="meta">Circuits • Signal handling • Lab work</div>
+            <p class="lead" style="margin-top:8px">Circuit experiments and signal processing examples from coursework — documented for clarity and repeatability.</p>
           </article>
 
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="https://github.com/dileepkumar33" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:18px" aria-labelledby="education-title">
+          <div class="section-title"><strong id="education-title">Education</strong></div>
+          <p class="lead"><strong>B.Tech — Electronics & Communication Engineering</strong><br>Coursework: Signals & Systems, Embedded Systems basics, Digital Electronics.</p>
         </section>
       </div>
 
-      <!-- Side column -->
+      <!-- right: sidebar -->
       <aside>
-        <div class="card">
-          <strong>Skills</strong>
+        <div class="card" aria-labelledby="skills-title">
+          <strong id="skills-title">Skills</strong>
           <div style="margin-top:10px" class="skills" aria-hidden="true">
-            <span class="skill">C++</span>
-            <span class="skill">Problem Solving</span>
-            <span class="skill">Basic Electronics</span>
-            <span class="skill">OOP Concepts</span>
-            <span class="skill">ECE Engineering</span>
+            <span class="chip">C++</span>
+            <span class="chip">OOP</span>
+            <span class="chip">Basic Embedded</span>
+            <span class="chip">Signal Concepts</span>
+            <span class="chip">Circuit Analysis</span>
+            <span class="chip">Git</span>
           </div>
-
-          <hr style="border:none;border-top:1px dashed rgba(255,255,255,0.03);margin:14px 0">
-
-          <div id="contact">
-            <strong>Contact</strong>
-            <ul class="side-list" style="margin-top:8px">
-              <li>Email: <a class="contact" href="mailto:dileepindo@gmail.com">dileepindo@gmail.com</a></li>
-              <li>Phone: <span style="color:var(--accent)">8431271011</span></li>
-              <li>GitHub: <a class="contact" href="https://github.com/dileepkumar33" target="_blank">github.com/dileepkumar33</a></li>
-            </ul>
-          </div>
-
         </div>
 
+        <div style="height:14px"></div>
+
+        <div class="card" id="contact" aria-labelledby="contact-title">
+          <strong id="contact-title">Contact</strong>
+          <div style="margin-top:10px;color:var(--muted);font-size:14px;line-height:1.5">
+            Email: <a href="mailto:dileepindo@gmail.com">dileepindo@gmail.com</a><br>
+            Phone: <a href="tel:+918431271011">+91 84312 71011</a><br>
+            GitHub: <a href="https://github.com/dileepkumar33" target="_blank" rel="noopener">github.com/dileepkumar33</a>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <a class="btn btn-primary" href="mailto:dileepindo@gmail.com">Email me</a>
+            <a class="btn btn-ghost" href="tel:+918431271011">Call</a>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <strong>Availability</strong>
+          <p class="meta" style="margin-top:8px">Open to internships, project collaborations, and freelance work. Remote OK.</p>
+        </div>
       </aside>
     </main>
 
     <footer>
-      <div style="margin-top:18px">© 2025 Dileep Kumar M — All Rights Reserved</div>
+      <div>© <span id="year"></span> Dileep Kumar M • Built with a minimal design</div>
     </footer>
   </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-  </html>
+</html>
